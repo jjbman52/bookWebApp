@@ -5,8 +5,12 @@
  */
 package com.mycompany.firstmaven.bookwebapp.Controller;
 
+import com.mycompany.firstmaven.bookwebapp.Model.Author;
+import com.mycompany.firstmaven.bookwebapp.Model.AuthorService;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,8 +21,10 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author jordanrehbein
  */
-@WebServlet(name = "AuthorController", urlPatterns = {"/AuthCon"})
+@WebServlet(name = "AuthorController", urlPatterns = {"/authorController"})
 public class AuthorController extends HttpServlet {
+    public static final String ACTION = "action";
+    public static final String LIST_ACTION = "list";
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,12 +38,28 @@ public class AuthorController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+        String destination = "/authorList.jsp";
+
+        try {
+            String action = request.getParameter(ACTION);
+            AuthorService authorService = new AuthorService();
+            List<Author> authorList = null;
             
-        } catch()
+            if(action.equalsIgnoreCase(LIST_ACTION)){
+                authorList = authorService.getAuthorList();
+                request.setAttribute("authorList", authorList);
+            }
+            
+        } catch(Exception e){
+            request.setAttribute("errMessage", e.getMessage());
+        }
+        
+        RequestDispatcher view
+                = request.getRequestDispatcher(destination);
+        view.forward(request, response);
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *

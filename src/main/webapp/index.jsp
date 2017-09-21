@@ -9,9 +9,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Home Page</title>
+        <title>Book Web Application</title>
     </head>
     <body>
-        <h1><a href="authorList.jsp">View all Authors</a></h1>
+        <h1>Pick a Task</h1>
+        <ul>
+            <li><a href="authorController?action=list">View all Authors</a></li>
+            <li>More to Come</li>
+        </ul>
     </body>
 </html>
