@@ -1,6 +1,6 @@
 <%-- 
-    Document   : authorList
-    Created on : Sep 16, 2017, 10:59:52 AM
+    Document   : authorAdd
+    Created on : Oct 14, 2017, 11:15:05 AM
     Author     : jordanrehbein
 --%>
 
@@ -14,12 +14,12 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="stylesheet.css">
         <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
-        <title>Author List</title>
+        <title>Add Author</title>
     </head>
     <div id="backround">
         <body>
             <div class="body">
-                <h1>Author List</h1>
+                <h1>Add Author</h1>
                 <table border="1">
                     <c:forEach var = "a" items="${authorList}">
                         <tr>
@@ -30,7 +30,17 @@
                         </tr>
                     </c:forEach>
                 </table>
-                <input type="button" value="Add Author" onclick="location.href = 'authorController?action=add'" />
+                <br>
+                <form name="form1" id="form1" method="POST" action="authorController?action=save">
+                    <table border="1">
+                        <tr>
+                            <td>Enter New Name:</td> <td><input type="text" value="" name="name"></td>
+                            <td><input type="submit" name="submit" value="Add"></td>
+                        </tr>
+                    </table>
+                </form>
+                <br>
+                <input type="button" value="Back" onclick="location.href = 'authorController?action=list'" />
             </div>
         </body>
     </div>
