@@ -21,6 +21,7 @@
                     <li><a href="authorController?action=list">View all Authors</a></li>
                     <li>More to Come</li>
                 </ul>
+                <jsp:include page="footer.jsp" />
             </div>
         </body>
     </div>

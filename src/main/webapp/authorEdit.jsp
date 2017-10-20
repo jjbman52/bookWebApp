@@ -40,6 +40,7 @@
                 </form>
                 <br>
                 <input type="button" value="Back" onclick="location.href = 'authorController?action=list'" />
+                <jsp:include page="footer.jsp" />
             </div>
         </body>
     </div>

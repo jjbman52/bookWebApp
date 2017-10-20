@@ -31,6 +31,7 @@
                     </c:forEach>
                 </table>
                 <input type="button" value="Add Author" onclick="location.href = 'authorController?action=add'" />
+                <jsp:include page="footer.jsp" />
             </div>
         </body>
     </div>
